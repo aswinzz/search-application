@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/my-boilerplate/static/css/main.0041f256.chunk.css",
+    "main.js": "/my-boilerplate/static/js/main.bd7b0d10.chunk.js",
+    "main.js.map": "/my-boilerplate/static/js/main.bd7b0d10.chunk.js.map",
+    "runtime-main.js": "/my-boilerplate/static/js/runtime-main.788cf477.js",
+    "runtime-main.js.map": "/my-boilerplate/static/js/runtime-main.788cf477.js.map",
+    "static/js/2.6292f28b.chunk.js": "/my-boilerplate/static/js/2.6292f28b.chunk.js",
+    "static/js/2.6292f28b.chunk.js.map": "/my-boilerplate/static/js/2.6292f28b.chunk.js.map",
+    "static/js/3.d7ea88e3.chunk.js": "/my-boilerplate/static/js/3.d7ea88e3.chunk.js",
+    "static/js/3.d7ea88e3.chunk.js.map": "/my-boilerplate/static/js/3.d7ea88e3.chunk.js.map",
+    "index.html": "/my-boilerplate/index.html",
+    "service-worker.js": "/my-boilerplate/service-worker.js",
+    "service-worker.js.map": "/my-boilerplate/service-worker.js.map",
+    "static/css/main.0041f256.chunk.css.map": "/my-boilerplate/static/css/main.0041f256.chunk.css.map",
+    "static/js/2.6292f28b.chunk.js.LICENSE.txt": "/my-boilerplate/static/js/2.6292f28b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.788cf477.js",
+    "static/js/2.6292f28b.chunk.js",
+    "static/css/main.0041f256.chunk.css",
+    "static/js/main.bd7b0d10.chunk.js"
+  ]
+}
