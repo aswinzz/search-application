@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { debounce } from '../../util';
+import Search from '../../components/search';
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 export default class Home extends Component {
   constructor(props, context) {
@@ -28,22 +29,16 @@ export default class Home extends Component {
   onKeyPress = (e) => {
 
     if (e.keyCode === 38) {
-      console.log('UP');
-
       if (this.state.total > 0 && this.state.currentPosition - 1 > -1) {
         this.setState({currentPosition: this.state.currentPosition - 1});
       }
     }
     else if (e.keyCode === 40) {
-      console.log('Down');
-
       if (this.state.total > 0 && this.state.currentPosition + 1 < this.state.total) {
         this.setState({currentPosition: this.state.currentPosition + 1});
       }
     }
     else if (e.keyCode === 13 && this.state.currentPosition > -1) {
-      console.log('Enter');
-
       this.setState({selectedItemIndex: this.state.currentPosition, isOpen: false})
     }
   }
@@ -75,37 +70,24 @@ export default class Home extends Component {
     this.setState({searchText: e.target.value}, this.fetchData);
   }
 
+  setListOpen = (isOpen) => {
+    this.setState({isOpen})
+  }
+
+  setSelectedItemIndex = (idx) => {
+    this.setState({selectedItemIndex: idx, isOpen: false})
+  }
+
   render() {
     return (
-      <Layout style={{backgroundColor: '#F0F2F5'}} className="layout">
+      <Layout className="layout">
         <div class="topnav">
           <a class="active" href="">Home</a>
-          <div className='search-element'>
-          <div style={{display: 'flex',justifyContent: 'center', alignItems: 'center', marginRight: 80}}>
-          <input onFocus={() => this.setState({isOpen: true})} className='search-input' value={this.state.searchText} onChange={this.onSearchTextChange} type="text" placeholder="Search.."/>
-          {this.state.total > 0 ? <span style={{marginTop: 10, marginLeft: -40}}>{this.state.total}</span> : null}
-          </div>
-          {this.state.total > 0 && this.state.isOpen ?
-          <ul className='search-result'>
-            {this.state.data.map((item,idx) => {
-              const ind = item.toLowerCase().indexOf(this.state.searchText.toLowerCase());
-              const pre = item.substring(0, ind);
-              const highlight = item.substring(ind, ind + this.state.searchText.length);
-              const rest = item.substring(ind + this.state.searchText.length);
-              return <li style={this.state.currentPosition === idx ? {backgroundColor: '#c1bebe'} : {}} onClick={() => {
-                this.setState({selectedItemIndex: idx, isOpen: false})
-              }}>
-                {ind !== -1 ? <>{pre}<font style={{color: 'red'}}>{highlight}</font>{rest}</> : item}
-              </li>
-            })}
-          </ul>
-          : null}
-          </div>
+          <Search data={this.state.data} setSelectedItemIndex={this.setSelectedItemIndex} selectedItemIndex={this.state.selectedItemIndex} total={this.state.total} currentPosition={this.state.currentPosition} isOpen={this.state.isOpen}  setListOpen={this.setListOpen} searchText={this.state.searchText} onSearchTextChange={this.onSearchTextChange}/>
         </div>
 
         {this.state.selectedItemIndex > -1 ?
-        <Content style={{ left: 0,
-          right: 0,textAlign: 'center', fontSize: 20, position: 'absolute', top: '50%' }}>
+        <Content className='content'>
           <div>Selected Item is {this.state.data[this.state.selectedItemIndex]}</div>
         </Content> : null}
       </Layout>

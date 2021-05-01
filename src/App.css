@@ -140,3 +140,21 @@ li {
 .hidden {
   display: none;
 }
+
+.content {
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+}
+
+.layout {
+  background-color: #F0F2F5;
+}
+
+.total-count {
+  margin-top: 10px;
+  margin-left: -40px;
+}
